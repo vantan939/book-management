@@ -17,7 +17,7 @@ class BookSeeder extends Seeder
         DB::table('books')->insert([
             [
             	'title' => 'Đi Tìm Lẽ Sống',
-            	'author' => 'Tan Nguyen Author',
+            	'author' => 'Author1',
             	'description' => 'Trước hết, đây là quyển sách viết về sự sinh tồn. Giống như nhiều người Do Thái sinh sống tại Đức và Đông Âu khi ấy, vốn nghĩ rằng mình sẽ được an toàn trong những năm 1930, Frankl đã trải qua khoảng thời gian chịu nhiều nghiệt ngã trong trại tập trung và trại hủy diệt của Đức quốc xã',
                 'image' => '',
                 'enabled' => 1,
@@ -27,7 +27,7 @@ class BookSeeder extends Seeder
             ],
             [
             	'title' => '13 Nguyên Tắc Nghĩ Giàu Làm Giàu',
-                'author' => 'Tan Nguyen Author',
+                'author' => 'Author2',
                 'description' => 'Trước hết, đây là quyển sách viết về sự sinh tồn. Giống như nhiều người Do Thái sinh sống tại Đức và Đông Âu khi ấy, vốn nghĩ rằng mình sẽ được an toàn trong những năm 1930, Frankl đã trải qua khoảng thời gian chịu nhiều nghiệt ngã trong trại tập trung và trại hủy diệt của Đức quốc xã',
                 'image' => '',
                 'enabled' => 1,
@@ -37,7 +37,7 @@ class BookSeeder extends Seeder
             ],
             [
                 'title' => 'Tư Duy Như Một Kẻ Lập Dị',
-                'author' => 'Tan Nguyen Author',
+                'author' => 'Author3',
                 'description' => 'Trước hết, đây là quyển sách viết về sự sinh tồn. Giống như nhiều người Do Thái sinh sống tại Đức và Đông Âu khi ấy, vốn nghĩ rằng mình sẽ được an toàn trong những năm 1930, Frankl đã trải qua khoảng thời gian chịu nhiều nghiệt ngã trong trại tập trung và trại hủy diệt của Đức quốc xã',
                 'image' => '',
                 'enabled' => 1,
