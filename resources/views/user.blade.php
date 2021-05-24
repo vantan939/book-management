@@ -10,7 +10,7 @@
 <body>
 	@includeIf('partials.header-user')
 
-	<div class="main-content">
+	<div class="main-content user-content">
 		@yield('content')
 	</div>
 
