@@ -28,8 +28,13 @@
 		},
         mounted() {
             axios
-		      .get('/api/book-list')
-		      .then(res => (this.items = res.data))
+	      	.get('/api/book-list',
+	      	{
+		      	headers: { 				   
+				    'X-Authorization': process.env.MIX_API_KEY
+			  	}
+	      	})
+	      	.then(res => (this.items = res.data))
         }
     }
 </script>

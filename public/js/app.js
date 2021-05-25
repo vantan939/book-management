@@ -1875,7 +1875,11 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    axios.get('/api/book-list').then(function (res) {
+    axios.get('/api/book-list', {
+      headers: {
+        'X-Authorization': "TanKMQbgZPv0PRC6GqCMlDQ7fgdamsVY75FrQvHfoIbw4gBaG5UX0wfk6dugKxrtW"
+      }
+    }).then(function (res) {
       return _this.items = res.data;
     });
   }

@@ -20,5 +20,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/book-list', function() {
-	return Book::all();
-});
+	$books = Book::all();
+	return response()->json($books, 200);
+})->middleware('api.key');
