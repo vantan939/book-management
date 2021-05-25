@@ -9,14 +9,18 @@ use Auth;
 class LoginController extends Controller
 {
     public function create() {
-    	return view('pages.login');
+        if (Auth::check()) {
+            return redirect()->route('home');
+        }
+
+        return view('pages.login');   	
     }
 
     public function handle(Request $request) {
     	$request->validate(
             [
                 'username'          =>      'required|email',
-                'password'          =>      'required|alpha_num'
+                'password'          =>      'required'
             ]
         );
 

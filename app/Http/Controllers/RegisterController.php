@@ -4,10 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Auth;
 
 class RegisterController extends Controller
 {
     public function create() {
+        if (Auth::check()) {
+            return redirect()->route('home');
+        }
+
     	return view('pages.register');
     }
 
@@ -15,7 +20,7 @@ class RegisterController extends Controller
     	$request->validate(
             [
                 'username'          =>      'required|email|unique:users,email',
-                'password'          =>      'required|alpha_num|min:6',
+                'password'          =>      'required|min:6',
                 'confirm_password'  =>      'required|same:password'
             ], [
 	            'username.unique' => 'The Email has already been taken.'

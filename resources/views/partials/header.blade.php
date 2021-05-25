@@ -1,9 +1,18 @@
+<?php
+	$fullname = '';
+	if(Auth::check()) {
+		$fullname = (empty(Auth::user()->firstName) && empty(Auth::user()->lastName)) 
+		? Auth::user()->email 
+		: Auth::user()->firstName. ' '. Auth::user()->lastName;
+	}	
+?>
+
 <header>
 	<div class="container">
 		<div class="row">
 			<div class="col-md-3">
 				<div class="logo">
-					<a href="#">BOOKING MANAGEMENT</a>
+					<a href="{{route('home')}}">BOOKING MANAGEMENT</a>
 				</div>
 			</div>
 			<div class="col-md-9">
@@ -15,7 +24,7 @@
 				  	<div class="collapse navbar-collapse" id="navbarNav">
 					    <ul class="navbar-nav">
 					      	<li class="nav-item active">
-						        <a class="nav-link" href="/">Book List <span class="sr-only">(current)</span></a>
+						        <a class="nav-link" href="{{route('home')}}">Book List <span class="sr-only">(current)</span></a>
 					      	</li>
 				     	 	<li class="nav-item">
 					        	<a class="nav-link" href="/my-book">My Book List</a>
@@ -23,9 +32,18 @@
 					      	<li class="nav-item">
 					        	<a class="nav-link" href="/book-creation">Book Creation</a>
 					      	</li>
-					      	<li class="nav-item">
-					        	<a class="nav-link" href="/log-out">Logout</a>
-					      	</li>	      
+					      	@if(Auth::check())
+								<li class="nav-item">
+						        	<a class="nav-link" href="{{route('log-out')}}">Logout</a>
+						      	</li>
+						      	<li class="nav-item">
+						        	<span class="nav-link">Xin chào {{ $fullname }}!</span>
+						      	</li>
+					      	@else
+					      		<li class="nav-item">
+						        	<a class="nav-link" href="{{route('login')}}">Login</a>
+						      	</li>
+					      	@endif					      	
 					    </ul>
 				  	</div>
 				</nav>
