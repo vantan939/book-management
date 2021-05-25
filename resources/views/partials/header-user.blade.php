@@ -14,10 +14,10 @@
 				  	</button>
 				  	<div class="collapse navbar-collapse" id="navbarNav">
 					    <ul class="navbar-nav">
-					      	<li class="nav-item active">
-						        <a class="nav-link" href="{{route('register')}}">Register <span class="sr-only">(current)</span></a>
+					      	<li class="nav-item {{ Route::is('register') ? 'active' : '' }}">
+						        <a class="nav-link" href="{{route('register')}}">Register</a>
 					      	</li>
-					      	<li class="nav-item">
+					      	<li class="nav-item {{ Route::is('login') ? 'active' : '' }}">
 					        	<a class="nav-link" href="{{route('login')}}">Login</a>
 					      	</li>	      
 					    </ul>

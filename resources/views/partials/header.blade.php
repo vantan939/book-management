@@ -23,13 +23,13 @@
 				  	</button>
 				  	<div class="collapse navbar-collapse" id="navbarNav">
 					    <ul class="navbar-nav">
-					      	<li class="nav-item active">
-						        <a class="nav-link" href="{{route('home')}}">Book List <span class="sr-only">(current)</span></a>
+					      	<li class="nav-item {{ Route::is('home') ? 'active' : '' }}">
+						        <a class="nav-link" href="{{route('home')}}">Book List</a>
 					      	</li>
-				     	 	<li class="nav-item">
+				     	 	<li class="nav-item {{ Route::is('my-book') ? 'active' : '' }}">
 					        	<a class="nav-link" href="/my-book">My Book List</a>
 					      	</li>
-					      	<li class="nav-item">
+					      	<li class="nav-item {{ Route::is('book-creation') ? 'active' : '' }}">
 					        	<a class="nav-link" href="/book-creation">Book Creation</a>
 					      	</li>
 					      	@if(Auth::check())
