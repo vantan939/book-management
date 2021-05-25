@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,12 +17,15 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('pages.book-list');
-});
+})->name('home');
 
-Route::get('/login', function () {
-    return view('pages.login');
-});
+Route::get('/register', [RegisterController::class, 'create']);
+Route::post('/register', [RegisterController::class, 'store']);
 
-Route::get('/register', function () {
-    return view('pages.register');
+Route::get('/login', [LoginController::class, 'create']);
+Route::post('/login', [LoginController::class, 'handle']);
+
+Route::get('/log-out', function () {
+    Auth::logout();
+    return redirect()->route('home');
 });
