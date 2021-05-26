@@ -19,5 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/book-list', [APIController::class, 'getBookList'])->middleware('api.key');
-Route::get('/my-book-list/{userId}', [APIController::class, 'getBookListByUserID'])->middleware('api.key');
+Route::middleware(['api.key'])->group(function () {
+	Route::get('/book-list', [APIController::class, 'getBookList']);
+	Route::get('/my-book-list/{userId}', [APIController::class, 'getBookListByUserID']);
+});
