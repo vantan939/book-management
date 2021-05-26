@@ -19622,7 +19622,11 @@ var render = function() {
                   _vm._v(_vm._s(index + 1))
                 ]),
                 _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(item.title))]),
+                _c("td", [
+                  _c("a", { attrs: { href: "/book/" + item.id } }, [
+                    _vm._v(_vm._s(item.title))
+                  ])
+                ]),
                 _vm._v(" "),
                 _c("td", [_vm._v(_vm._s(item.author))])
               ])
@@ -19690,7 +19694,11 @@ var render = function() {
                   _vm._v(_vm._s(index + 1))
                 ]),
                 _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(item.title))]),
+                _c("td", [
+                  _c("a", { attrs: { href: "/book/" + item.id } }, [
+                    _vm._v(_vm._s(item.title))
+                  ])
+                ]),
                 _vm._v(" "),
                 _c("td", [_vm._v(_vm._s(item.author))]),
                 _vm._v(" "),

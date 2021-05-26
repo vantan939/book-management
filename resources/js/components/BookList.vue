@@ -11,7 +11,7 @@
 		  	<tbody>
 		  		<tr v-for="(item, index) in items" v-bind:key="index">
 		  			<th scope="row">{{ index + 1 }}</th>
-		  			<td>{{ item.title }}</td>
+		  			<td><a :href="'/book/' + item.id">{{ item.title }}</a></td>
 		  			<td>{{ item.author }}</td>
 		  		</tr>	    
 		  	</tbody>
