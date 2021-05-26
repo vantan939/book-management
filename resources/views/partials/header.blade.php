@@ -37,7 +37,7 @@
 						        	<a class="nav-link" href="{{route('log-out')}}">Logout</a>
 						      	</li>
 						      	<li class="nav-item">
-						        	<span class="nav-link">Xin chào {{ $fullname }}!</span>
+						        	<span class="nav-link">Hello {{ $fullname }}!</span>
 						      	</li>
 					      	@else
 					      		<li class="nav-item">

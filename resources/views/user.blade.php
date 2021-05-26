@@ -8,7 +8,7 @@
 	<link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
 </head>
 <body>
-	@includeIf('partials.header-user')
+	@includeIf('partials.header-guest')
 
 	<div class="main-content user-content">
 		@yield('content')
