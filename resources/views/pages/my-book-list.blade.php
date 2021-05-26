@@ -10,7 +10,7 @@
 		<div class="row">
 			<div class="col-md-12">
 				<div id="app">
-					<mybooklist props-userid="{{ Auth::user()->id }}" />
+					<my-book-list props-userid="{{ Auth::user()->id }}"></my-book-list>
 				</div>				
 			</div>			
 		</div>

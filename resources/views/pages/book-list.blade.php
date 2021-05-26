@@ -10,7 +10,7 @@
 		<div class="row">
 			<div class="col-md-12">
 				<div id="app">
-					<booklist />
+					<book-list></book-list>
 				</div>				
 			</div>			
 		</div>

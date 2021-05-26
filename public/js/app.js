@@ -1991,8 +1991,8 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js").default;
-Vue.component('booklist', __webpack_require__(/*! ./components/BookList.vue */ "./resources/js/components/BookList.vue").default);
-Vue.component('mybooklist', __webpack_require__(/*! ./components/MyBookList.vue */ "./resources/js/components/MyBookList.vue").default);
+Vue.component('BookList', __webpack_require__(/*! ./components/BookList.vue */ "./resources/js/components/BookList.vue").default);
+Vue.component('MyBookList', __webpack_require__(/*! ./components/MyBookList.vue */ "./resources/js/components/MyBookList.vue").default);
 Vue.component('BookDetail', __webpack_require__(/*! ./components/BookDetail.vue */ "./resources/js/components/BookDetail.vue").default);
 var app = new Vue({
   el: '#app'
