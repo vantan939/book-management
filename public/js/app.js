@@ -1930,6 +1930,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -1952,6 +1960,23 @@ __webpack_require__.r(__webpack_exports__);
         _this.msg = res.data;
       }
     });
+  },
+  methods: {
+    deleteBook: function deleteBook(id, index) {
+      var _this2 = this;
+
+      if (confirm('Do you want delete this book?')) {
+        axios["delete"]('/api/book/del/' + id, {
+          headers: {
+            'X-Authorization': "TanKMQbgZPv0PRC6GqCMlDQ7fgdamsVY75FrQvHfoIbw4gBaG5UX0wfk6dugKxrtW"
+          }
+        }).then(function (resp) {
+          _this2.items.splice(index, 1);
+        })["catch"](function (error) {
+          console.log(error);
+        });
+      }
+    }
   }
 });
 
@@ -19667,7 +19692,25 @@ var render = function() {
                 _vm._v(" "),
                 _c("td", [_vm._v(_vm._s(item.title))]),
                 _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(item.author))])
+                _c("td", [_vm._v(_vm._s(item.author))]),
+                _vm._v(" "),
+                _vm._m(1, true),
+                _vm._v(" "),
+                _c("td", [
+                  _c(
+                    "a",
+                    {
+                      attrs: { href: "/book/del/" + item.id },
+                      on: {
+                        click: function($event) {
+                          $event.preventDefault()
+                          return _vm.deleteBook(item.id, index)
+                        }
+                      }
+                    },
+                    [_vm._v("Delete")]
+                  )
+                ])
               ])
             }),
             0
@@ -19693,9 +19736,19 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Title")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Author")])
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Author")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Edit")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Delete")])
       ])
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [_c("a", { attrs: { href: "#" } }, [_vm._v("Edit")])])
   }
 ]
 render._withStripped = true

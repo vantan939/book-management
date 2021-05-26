@@ -6,6 +6,8 @@
 			      <th scope="col">#</th>
 			      <th scope="col">Title</th>
 			      <th scope="col">Author</th>
+			      <th scope="col">Edit</th>
+			      <th scope="col">Delete</th>
 			    </tr>
 		  	</thead>
 		  	<tbody>
@@ -13,6 +15,12 @@
 		  			<th scope="row">{{ index + 1 }}</th>
 		  			<td>{{ item.title }}</td>
 		  			<td>{{ item.author }}</td>
+		  			<td><a href="#">Edit</a></td>
+		  			<td>
+					    <a :href="'/book/del/' + item.id"
+					   		v-on:click.prevent="deleteBook(item.id, index)"
+						>Delete</a>
+					</td>
 		  		</tr>	    
 		  	</tbody>
 		</table>
@@ -46,6 +54,25 @@
 					this.msg = res.data
 				}
 			})
-        }
+        },
+		methods: {
+			deleteBook(id, index) {
+				if(confirm('Do you want delete this book?')) {
+					axios.delete('/api/book/del/'+ id,
+					{
+						headers: { 				   
+							'X-Authorization': process.env.MIX_API_KEY
+						}
+					})
+					.then(resp => {
+						this.items.splice(index, 1);
+					})
+					.catch(error => {
+						console.log(error);
+					})
+				}				
+			}
+		}
     }
 </script>
+

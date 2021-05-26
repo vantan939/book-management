@@ -27,4 +27,14 @@ class APIController extends Controller
             return response()->json('Book Not found!', 200);
         }
     }
+
+    public function bookDelete($id) {
+        if(Book::where('id', $id)->exists()) {
+            $book = Book::find($id);
+            $book->delete();
+            return response()->json('Deleted Book!', 200);
+        } else {
+            return response()->json('Book Not found!', 200);
+        }
+    }
 }
