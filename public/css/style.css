@@ -8,6 +8,7 @@ header {
 
 header nav.bg-light {
 	background-color: #563d7c !important;
+	padding-right: 0;
 }
 
 header nav ul {
@@ -43,6 +44,15 @@ header .logo a {
 	margin-bottom: 0;
 	color: #fff;
 	text-decoration: none;
+}
+
+.user-info {
+	margin-top: 30px;
+	font-weight: bold;
+}
+
+.user-info .user-name {
+	text-align: right;
 }
 
 footer {

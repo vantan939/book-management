@@ -9,6 +9,7 @@
 </head>
 <body>
 	@includeIf('partials.header')
+	@includeIf('partials.user-info')
 
 	<div class="main-content">
 		@yield('content')

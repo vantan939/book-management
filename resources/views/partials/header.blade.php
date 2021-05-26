@@ -1,12 +1,3 @@
-<?php
-	$fullname = '';
-	if(Auth::check()) {
-		$fullname = (empty(Auth::user()->firstName) && empty(Auth::user()->lastName)) 
-		? Auth::user()->email 
-		: Auth::user()->firstName. ' '. Auth::user()->lastName;
-	}	
-?>
-
 <header>
 	<div class="container">
 		<div class="row">
@@ -36,9 +27,6 @@
 								<li class="nav-item">
 						        	<a class="nav-link" href="{{route('log-out')}}">Logout</a>
 						      	</li>
-						      	<li class="nav-item">
-						        	<span class="nav-link">Hello {{ $fullname }}!</span>
-						      	</li>
 					      	@else
 					      		<li class="nav-item">
 						        	<a class="nav-link" href="{{route('login')}}">Login</a>
@@ -49,5 +37,6 @@
 				</nav>
 			</div>
 		</div>
+		
 	</div>
 </header>
