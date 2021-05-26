@@ -18,6 +18,8 @@ use App\Http\Controllers\BookController;
 
 Route::get('/', [BookController::class, 'bookList'])->name('home');
 
+Route::get('/book/{id}', [BookController::class, 'bookDetail'])->name('book-detail');
+
 Route::get('/register', [RegisterController::class, 'create'])->name('register');
 Route::post('/register', [RegisterController::class, 'store']);
 
