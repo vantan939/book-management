@@ -56,6 +56,10 @@ footer p {
 	margin-bottom: 0;
 }
 
+.no-result {
+	text-align: center;
+}
+
 .main-content {
 	padding: 30px 0;
 }

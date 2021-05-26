@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<table class="table mt-30" v-if="items !== null">
+		<table class="table mt-30" v-if="items != null">
 		  	<thead class="thead-light">
 			    <tr>
 			      <th scope="col">#</th>
@@ -9,13 +9,16 @@
 			    </tr>
 		  	</thead>
 		  	<tbody>
-		  		<tr v-for="(item, index) in items">
+		  		<tr v-for="(item, index) in items" v-bind:key="index">
 		  			<th scope="row">{{ index + 1 }}</th>
 		  			<td>{{ item.title }}</td>
 		  			<td>{{ item.author }}</td>
 		  		</tr>	    
 		  	</tbody>
 		</table>
+		<div class="mt-30 no-result" v-if="items == null">
+            <p>{{ msg }}</p>
+        </div>
 	</div>
 </template>
 
@@ -23,7 +26,8 @@
 	export default {
 		data() {
 			return {
-				items: null
+				items: null,
+				msg: ''
 			}
 		},
         mounted() {
@@ -34,7 +38,13 @@
 				    'X-Authorization': process.env.MIX_API_KEY
 			  	}
 	      	})
-	      	.then(res => (this.items = res.data))
+	      	.then(res => {
+				if(Array.isArray(res.data)) {
+					this.items = res.data
+				}else {
+					this.msg = res.data
+				}
+			})
         }
     }
 </script>

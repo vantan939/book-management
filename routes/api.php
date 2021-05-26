@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-Use App\Models\Book;
+use App\Http\Controllers\APIController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +19,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/book-list', function() {
-	$books = Book::all();
-	return response()->json($books, 200);
-})->middleware('api.key');
+Route::get('/book-list', [APIController::class, 'getBookList'])->middleware('api.key');
+Route::get('/my-book-list/{userId}', [APIController::class, 'getBookListByUserID'])->middleware('api.key');

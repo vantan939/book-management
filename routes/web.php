@@ -28,3 +28,7 @@ Route::get('/log-out', function () {
     Auth::logout();
     return redirect()->route('home');
 })->name('log-out');
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/my-book', [BookController::class, 'myBookList'])->name('my-book');
+});
