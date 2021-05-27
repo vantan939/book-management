@@ -33,4 +33,5 @@ Route::get('/log-out', function () {
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/my-book', [BookController::class, 'myBookList'])->name('my-book');
+    Route::get('/book-creation', [BookController::class, 'bookCreation'])->name('book-creation');
 });

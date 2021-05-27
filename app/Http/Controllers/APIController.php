@@ -37,4 +37,13 @@ class APIController extends Controller
             return response()->json('Book Not found!', 200);
         }
     }
+
+    public function bookCreation(Request $request) {
+        $result = Book::create($request->all());
+        if($result->exists) {
+            return response()->json('Book has been created!', 200);
+        }else {
+            return response()->json('Cant create a book!', 200);
+        }
+    }
 }
