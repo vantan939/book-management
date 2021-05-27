@@ -16,10 +16,7 @@
 					        <div class="form-group">
 					        	<input type="password" class="form-control" name="password" placeholder="Password" />
 					        	{!!$errors->first("password", "<span class='text-danger'>:message</span>")!!}
-					        </div>
-					        <div class="form-group">
-								<label class="checkbox"> <input type="checkbox" value="remember-me" id="rememberMe" name="remember" /> Remember me </label>
-					        </div>
+					        </div>					        
 					        					        					       
 	                        @if(Session::has('failed'))
 	                            <div class="alert alert-danger alert-dismissible">
