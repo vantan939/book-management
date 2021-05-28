@@ -46,4 +46,14 @@ class APIController extends Controller
             return response()->json('Cant create a book!', 200);
         }
     }
+
+    public function bookEdit(Request $request, $id) {
+        $data = $request->all();        
+        $book = Book::where('id', $id);        
+        if($book->update($data)) {
+            return response()->json('Book has been updated!', 200);
+        }else {
+            return response()->json('Cant update a book!', 200);
+        }
+    }
 }

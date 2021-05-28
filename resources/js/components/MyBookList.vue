@@ -15,11 +15,15 @@
 		  			<th scope="row">{{ index + 1 }}</th>
 		  			<td><a :href="'/book/' + item.id">{{ item.title }}</a></td>
 		  			<td>{{ item.author }}</td>
-		  			<td><a href="#">Edit</a></td>
+		  			<td>
+						<a :href="'/book/edit/' + item.id">Edit</a>
+					</td>
 		  			<td>
 					    <a :href="'/book/del/' + item.id"
 					   		v-on:click.prevent="deleteBook(item.id, index)"
-						>Delete</a>
+						>
+							Delete
+						</a>
 					</td>
 		  		</tr>	    
 		  	</tbody>
