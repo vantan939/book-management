@@ -17,12 +17,16 @@
 					      	<li class="nav-item {{ Route::is('home') ? 'active' : '' }}">
 						        <a class="nav-link" href="{{route('home')}}">Book List</a>
 					      	</li>
-				     	 	<li class="nav-item {{ Route::is('my-book') ? 'active' : '' }}">
-					        	<a class="nav-link" href="/my-book">My Book List</a>
-					      	</li>
-					      	<li class="nav-item {{ Route::is('book-creation') ? 'active' : '' }}">
-					        	<a class="nav-link" href="/book-creation">Book Creation</a>
-					      	</li>
+
+							@if(Auth::check())
+								<li class="nav-item {{ Route::is('my-book') ? 'active' : '' }}">
+									<a class="nav-link" href="/my-book">My Book List</a>
+								</li>
+								<li class="nav-item {{ Route::is('book-creation') ? 'active' : '' }}">
+									<a class="nav-link" href="/book-creation">Book Creation</a>
+								</li>
+							@endif
+
 					      	@if(Auth::check())
 								<li class="nav-item">
 						        	<a class="nav-link" href="{{route('log-out')}}">Logout</a>
