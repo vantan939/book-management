@@ -1,18 +1,13 @@
 @extends('app')
 
+@section('title','Book List')
+
 @section('content')
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12 title-page">
-				<h2>BOOK LIST</h2>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-12">
-				<div id="app">
-					<book-list></book-list>
-				</div>				
-			</div>			
-		</div>
+	<div class="row">
+		<div class="col-md-12">
+			<div id="app">
+				<book-list></book-list>
+			</div>				
+		</div>			
 	</div>
 @endsection

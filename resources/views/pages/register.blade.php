@@ -1,5 +1,7 @@
 @extends('user')
 
+@section('title', 'Register')
+
 @section('content')
 	<div class="container">
 		<div class="row">
