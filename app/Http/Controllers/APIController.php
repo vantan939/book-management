@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 Use App\Models\Book;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class APIController extends Controller
 {
@@ -14,7 +13,7 @@ class APIController extends Controller
         if($books->isNotEmpty()) {
             return response()->json($books, 200);
         }else {
-            return response()->json('Book Not found!', 200);
+            return response()->json('Book Not found!', 404);
         }
     }
 
@@ -24,7 +23,7 @@ class APIController extends Controller
         if($books->isNotEmpty()) {
             return response()->json($books, 200);
         }else {
-            return response()->json('Book Not found!', 200);
+            return response()->json('Book Not found!', 404);
         }
     }
 
@@ -34,7 +33,7 @@ class APIController extends Controller
             $book->delete();
             return response()->json('Deleted Book!', 200);
         } else {
-            return response()->json('Book Not found!', 200);
+            return response()->json('Book Not found!', 404);
         }
     }
 
@@ -43,7 +42,7 @@ class APIController extends Controller
         if($result->exists) {
             return response()->json('Book has been created!', 200);
         }else {
-            return response()->json('Cant create a book!', 200);
+            return response()->json('Cant create a book!', 404);
         }
     }
 
@@ -53,7 +52,7 @@ class APIController extends Controller
         if($book->update($data)) {
             return response()->json('Book has been updated!', 200);
         }else {
-            return response()->json('Cant update a book!', 200);
+            return response()->json('Cant update a book!', 404);
         }
     }
 }
