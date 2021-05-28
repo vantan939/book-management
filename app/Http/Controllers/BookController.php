@@ -15,8 +15,13 @@ class BookController extends Controller
     	return view('pages.my-book-list');
     }
 
-    public function bookDetail() {
-    	return view('pages.book-detail');
+    public function bookDetail($id) {
+        $data = Book::find($id);
+        if($data) {
+            return view('pages.book-detail')->with('data', $data);
+        }else {
+            abort(404);
+        }    	
     }
 
     public function bookCreation() {
