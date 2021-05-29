@@ -2122,6 +2122,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -2146,6 +2159,22 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   props: ['propsUsertype', 'propsUserid'],
+  created: function created() {
+    if (this.propsUsertype == 'admin') {
+      this.tableColumns.splice(2, 0, {
+        label: "Status",
+        field: "enabled",
+        numeric: false,
+        html: true
+      });
+      this.tableColumns.splice(4, 0, {
+        label: "Edit",
+        field: "edit",
+        numeric: false,
+        html: true
+      });
+    }
+  },
   mounted: function mounted() {
     var _this = this;
 
@@ -2162,10 +2191,27 @@ __webpack_require__.r(__webpack_exports__);
     });
   },
   methods: {
+    deleteBook: function deleteBook(id, index) {
+      var _this2 = this;
+
+      if (confirm('Do you want delete this book?')) {
+        axios["delete"]('/api/book/del/' + id, {
+          headers: {
+            'X-Authorization': "TanKMQbgZPv0PRC6GqCMlDQ7fgdamsVY75FrQvHfoIbw4gBaG5UX0wfk6dugKxrtW"
+          }
+        }).then(function (resp) {
+          _this2.items.splice(index - 1, 1);
+        })["catch"](function (error) {
+          console.log(error);
+        });
+      }
+    },
     setNewData: function setNewData(data) {
       data.forEach(function (value, index) {
         data[index].title = '<a title="' + value.title + '" href="/book/' + value.id + '">' + value.title + '</a>';
         data[index].description = value.description.replace(/(.{60})..+/, "$1…");
+        data[index].enabled = value.enabled == 1 ? '<span>Enabled</span>' : '<span class="color-red">Disabled</span>';
+        data[index].edit = '<a href="/book/edit/' + value.id + '">Edit</a>';
         data[index].num = index + 1;
       });
       this.items = data;
@@ -24051,16 +24097,59 @@ var render = function() {
     "div",
     [
       _vm.items.length > 0
-        ? _c("data-table", {
-            attrs: {
-              title: "List",
-              columns: _vm.tableColumns,
-              rows: _vm.items,
-              printable: false,
-              exportable: false,
-              perPage: [10, 20, 50]
-            }
-          })
+        ? _c(
+            "data-table",
+            {
+              attrs: {
+                title: "List",
+                columns: _vm.tableColumns,
+                rows: _vm.items,
+                printable: false,
+                exportable: false,
+                perPage: [10, 20, 50]
+              },
+              scopedSlots: _vm._u(
+                [
+                  {
+                    key: "tbody-tr",
+                    fn: function(props) {
+                      return _vm.propsUsertype == "admin"
+                        ? [
+                            _c("td", [
+                              _c(
+                                "a",
+                                {
+                                  attrs: { href: "/book/del/" + props.row.id },
+                                  on: {
+                                    click: function($event) {
+                                      $event.preventDefault()
+                                      return _vm.deleteBook(
+                                        props.row.id,
+                                        props.row.num
+                                      )
+                                    }
+                                  }
+                                },
+                                [_vm._v("\n\t\t\t\t\tDelete\n\t\t\t\t")]
+                              )
+                            ])
+                          ]
+                        : undefined
+                    }
+                  }
+                ],
+                null,
+                true
+              )
+            },
+            [
+              _vm.propsUsertype == "admin"
+                ? _c("th", { attrs: { slot: "thead-tr" }, slot: "thead-tr" }, [
+                    _vm._v("\n\t\t\tDelete\n\t\t")
+                  ])
+                : _vm._e()
+            ]
+          )
         : _vm._e(),
       _vm._v(" "),
       _vm.result != ""
