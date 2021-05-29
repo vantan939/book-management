@@ -24,7 +24,7 @@
 		</data-table>
 
 		<div class="no-result mt-30" v-if="result != ''">
-			<p>{{ result }}</p>
+			<p>{{ result }}. Please go to <a href="/book-creation">Book Creation</a> to create a new Book.</p>
 		</div>
 	</div>
 </template>

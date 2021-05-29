@@ -24064,7 +24064,13 @@ var render = function() {
       _vm._v(" "),
       _vm.result != ""
         ? _c("div", { staticClass: "no-result mt-30" }, [
-            _c("p", [_vm._v(_vm._s(_vm.result))])
+            _c("p", [
+              _vm._v(_vm._s(_vm.result) + ". Please go to "),
+              _c("a", { attrs: { href: "/book-creation" } }, [
+                _vm._v("Book Creation")
+              ]),
+              _vm._v(" to create a new Book.")
+            ])
           ])
         : _vm._e()
     ],
@@ -24152,7 +24158,13 @@ var render = function() {
       _vm._v(" "),
       _vm.result != ""
         ? _c("div", { staticClass: "no-result mt-30" }, [
-            _c("p", [_vm._v(_vm._s(_vm.result))])
+            _c("p", [
+              _vm._v(_vm._s(_vm.result) + ". Please go to "),
+              _c("a", { attrs: { href: "/book-creation" } }, [
+                _vm._v("Book Creation")
+              ]),
+              _vm._v(" to create a new Book.")
+            ])
           ])
         : _vm._e()
     ],
