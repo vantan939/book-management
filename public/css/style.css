@@ -1,3 +1,5 @@
+@import url(http://fonts.googleapis.com/icon?family=Material+Icons);
+
 .main-content {
 	min-height: 500px;
 }
@@ -124,4 +126,33 @@ footer p {
 
 .form-signin .form-control:focus {
 	z-index: 2;
+}
+
+.material-pagination li {
+	font-size: 0;
+}
+
+#search-input-container label {
+	display: block;
+}
+
+#search-input-container label input {
+	box-shadow: none;
+}
+
+.material-table {
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+
+.material-table table th {
+	font-size: 16px !important;
+}
+
+.material-table table tr td {
+	font-size: 14px !important;
+}
+
+.material-table table tr td a {
+	color: #007bff !important;
 }

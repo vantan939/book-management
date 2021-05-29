@@ -20,6 +20,7 @@
     },
     "dependencies": {
         "sass": "^1.34.0",
-        "sass-loader": "^11.1.1"
+        "sass-loader": "^11.1.1",
+        "vue-materialize-datatable": "^1.0.4"
     }
 }
