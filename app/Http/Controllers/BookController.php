@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 Use App\Models\Book;
+Use App\Models\User;
+use Auth;
 
 class BookController extends Controller
 {
@@ -30,6 +32,11 @@ class BookController extends Controller
 
     public function bookEdit($id) {
         $data = Book::find($id);
-    	return view('pages.book-edit')->with('data', $data);
+        $id_user_current = Auth::user()->id;
+        if($id_user_current == $data['user_id'] || User::find($id_user_current)['role_id'] == 2) {
+            return view('pages.book-edit')->with('data', $data);
+        }else {
+            abort(404);
+        }    	
     }
 }

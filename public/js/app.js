@@ -2118,10 +2118,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
       items: [],
+      result: '',
       tableColumns: [{
         label: "Title",
         field: "title",
@@ -2150,6 +2155,8 @@ __webpack_require__.r(__webpack_exports__);
     }).then(function (res) {
       if (Array.isArray(res.data)) {
         _this.setNewData(res.data);
+      } else {
+        _this.result = res.data;
       }
     });
   },
@@ -2205,10 +2212,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
       items: [],
+      result: '',
       tableColumns: [{
         label: "Title",
         field: "title",
@@ -2243,6 +2255,8 @@ __webpack_require__.r(__webpack_exports__);
     }).then(function (res) {
       if (Array.isArray(res.data)) {
         _this.setNewData(res.data);
+      } else {
+        _this.result = res.data;
       }
     });
   },
@@ -24040,6 +24054,12 @@ var render = function() {
               perPage: [10, 20, 50]
             }
           })
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.result != ""
+        ? _c("div", { staticClass: "no-result mt-30" }, [
+            _c("p", [_vm._v(_vm._s(_vm.result))])
+          ])
         : _vm._e()
     ],
     1
@@ -24122,6 +24142,12 @@ var render = function() {
               ])
             ]
           )
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.result != ""
+        ? _c("div", { staticClass: "no-result mt-30" }, [
+            _c("p", [_vm._v(_vm._s(_vm.result))])
+          ])
         : _vm._e()
     ],
     1

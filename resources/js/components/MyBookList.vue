@@ -22,6 +22,10 @@
 				</td>
 			</template>
 		</data-table>
+
+		<div class="no-result mt-30" v-if="result != ''">
+			<p>{{ result }}</p>
+		</div>
 	</div>
 </template>
 
@@ -30,6 +34,7 @@
 		data() {
 			return {
 				items: [],
+				result: '',
 				tableColumns: [
 					{
 						label: "Title",
@@ -70,6 +75,8 @@
 	      	.then(res => {
 				if(Array.isArray(res.data)) {
 					this.setNewData(res.data)
+				}else {
+					this.result = res.data					
 				}
 			})
         },

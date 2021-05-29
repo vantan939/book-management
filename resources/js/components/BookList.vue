@@ -9,6 +9,10 @@
 			:perPage="[10, 20, 50]"
 			v-if="items.length > 0"
 		/>
+
+		<div class="no-result mt-30" v-if="result != ''">
+			<p>{{ result }}</p>
+		</div>
 	</div>
 </template>
 
@@ -17,6 +21,7 @@
 		data() {
 			return {
 				items: [],
+				result: '',
 				tableColumns: [
 					{
 						label: "Title",
@@ -50,6 +55,8 @@
 	      	.then(res => {
 				if(Array.isArray(res.data)) {					
 					this.setNewData(res.data)
+				}else {
+					this.result = res.data					
 				}
 			})
         },
