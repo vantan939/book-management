@@ -55,6 +55,12 @@
 						html: false
 					},
 					{
+						label: "Status",
+						field: "enabled",
+						numeric: false,
+						html: true
+					},
+					{
 						label: "Edit",
 						field: "edit",
 						numeric: false,
@@ -101,6 +107,7 @@
 				data.forEach(function(value, index) {
 					data[index].title = '<a title="'+value.title+'" href="/book/'+ value.id +'">'+ value.title +'</a>'
 					data[index].description = value.description.replace(/(.{60})..+/, "$1…")
+					data[index].enabled = (value.enabled == 1) ? '<span>Enabled</span>' : '<span class="color-red">Disabled</span>'
 					data[index].edit = '<a href="/book/edit/'+ value.id +'">Edit</a>'
 					data[index].num = index + 1
 				})
