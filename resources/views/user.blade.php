@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>@yield('title') | {{ config('app.name', 'Booking Management') }}</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{asset('css/app.css')}}">
 </head>
 <body>
 	@includeIf('partials.header-guest')

@@ -1,1 +1,130 @@
+@import url(http://fonts.googleapis.com/icon?family=Material+Icons);
+header {
+  background-color: #563d7c;
+}
+header nav.bg-light {
+  background-color: #563d7c !important;
+  padding-right: 0;
+}
+header nav ul {
+  margin-left: auto;
+}
+header nav ul li:not(:last-child) {
+  margin-right: 20px;
+}
+header nav ul li.active a {
+  border-bottom: 1px solid #fff;
+}
+header nav ul li a {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  padding-bottom: 2px !important;
+  border-bottom: 1px solid transparent;
+  color: #fff !important;
+}
+header nav ul li span {
+  color: #fff !important;
+}
+header .logo {
+  display: flex;
+  height: 100%;
+  align-items: center;
+}
+header .logo a {
+  margin-bottom: 0;
+  color: #fff;
+  text-decoration: none;
+}
 
+footer {
+  background-color: #563d7c;
+  text-align: center;
+  color: #fff;
+  padding: 10px 0;
+}
+footer p {
+  margin-bottom: 0;
+}
+
+.user-info {
+  margin-top: 30px;
+  font-weight: bold;
+}
+.user-info .user-name {
+  text-align: right;
+}
+
+.no-result {
+  text-align: center;
+}
+
+.main-content {
+  padding: 30px 0;
+  min-height: 500px;
+}
+.main-content.user-content {
+  background: #eeeeee;
+}
+.main-content .title-page {
+  text-align: center;
+}
+
+.mt-30 {
+  margin-top: 30px;
+}
+
+.user-form {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.form-signin {
+  max-width: 410px;
+  padding: 15px 35px 45px;
+  margin: 0 auto;
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+.form-signin .form-signin-heading {
+  text-align: center;
+  margin-bottom: 30px;
+}
+.form-signin .checkbox {
+  margin-bottom: 5px;
+  font-weight: normal;
+}
+.form-signin .form-control {
+  position: relative;
+  font-size: 16px;
+  height: auto;
+  padding: 10px;
+  box-sizing: border-box;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+
+.material-pagination li {
+  font-size: 0;
+}
+
+#search-input-container label {
+  display: block;
+}
+#search-input-container label input {
+  box-shadow: none;
+}
+
+.material-table {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+.material-table table th {
+  font-size: 16px !important;
+}
+.material-table table tr td {
+  font-size: 14px !important;
+}
+.material-table table tr td a {
+  color: #007bff !important;
+}
