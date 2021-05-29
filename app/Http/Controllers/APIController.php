@@ -7,9 +7,31 @@ use Illuminate\Http\Request;
 
 class APIController extends Controller
 {
-    public function getBookList() {
-        $books = Book::all();
-
+    public function getBookList(Request $request) {
+        $type = $request->type;
+        $id_user = $request->user;
+        if(isset($type) && isset($id_user)) {
+            switch ($type) {
+                case "guest":                    
+                    $books = Book::where('enabled', 1)->get();
+                    break;
+                case "normal":
+                    $books = Book::where('enabled', 1)->orWhere(function($q) use ($id_user) {
+                        $q->where('enabled', 0)
+                        ->where('user_id', '=' , $id_user);
+                    })
+                    ->get();
+                    break;
+                case "admin":                    
+                    $books = Book::all();
+                    break;
+                default:                    
+                    $books = Book::where('enabled', 1)->get();
+            }
+        }else {
+            $books = Book::where('enabled', 1)->get();
+        }
+        
         if($books->isNotEmpty()) {
             return response()->json($books, 200);
         }else {

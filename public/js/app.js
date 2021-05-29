@@ -2145,10 +2145,11 @@ __webpack_require__.r(__webpack_exports__);
       }]
     };
   },
+  props: ['propsUsertype', 'propsUserid'],
   mounted: function mounted() {
     var _this = this;
 
-    axios.get('/api/book-list', {
+    axios.get('/api/book-list?type=' + this.propsUsertype + '&user=' + this.propsUserid, {
       headers: {
         'X-Authorization': "TanKMQbgZPv0PRC6GqCMlDQ7fgdamsVY75FrQvHfoIbw4gBaG5UX0wfk6dugKxrtW"
       }

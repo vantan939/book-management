@@ -6,7 +6,7 @@
 	<div class="row">
 		<div class="col-md-12">
 			<div id="app">
-				<book-list></book-list>
+				<book-list props-usertype="{{ $type_user }}" props-userid="{{ $id_user_current }}"></book-list>
 			</div>				
 		</div>			
 	</div>

@@ -44,9 +44,10 @@
 				]
 			}
 		},
+		props: ['propsUsertype', 'propsUserid'],
         mounted() {
             axios
-	      	.get('/api/book-list',
+	      	.get('/api/book-list?type=' + this.propsUsertype + '&user=' + this.propsUserid,
 	      	{
 		      	headers: { 				   
 				    'X-Authorization': process.env.MIX_API_KEY

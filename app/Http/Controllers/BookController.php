@@ -10,7 +10,18 @@ use Auth;
 class BookController extends Controller
 {
     public function bookList() {
-    	return view('pages.book-list');
+        if(Auth::check()) {
+            $id_user_current = Auth::user()->id;
+            if(User::find($id_user_current)['role_id'] == 1) {
+                $type_user = 'normal';
+            }else {
+                $type_user = 'admin';
+            }
+        }else {
+            $type_user = 'guest';
+            $id_user_current = 0;
+        }
+    	return view('pages.book-list', compact('type_user','id_user_current'));
     }
 
     public function myBookList() {
