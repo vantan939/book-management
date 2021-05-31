@@ -12,8 +12,7 @@ DB_DATABASE=book_management
 DB_USERNAME=root
 DB_PASSWORD=
 ```
-- Add `MIX_API_KEY` under `APP_URL`. Example: `MIX_API_KEY=TanKMQbgZPv0PRC6GqCMlDQ7fgdamsVY75FrQvHfoIbw4gBaG5UX0wfk6dugKxrtW`
->You can add any key string if you want 
+- Add `MIX_API_KEY` under `APP_URL`. `MIX_API_KEY=TanKMQbgZPv0PRC6GqCMlDQ7fgdamsVY75FrQvHfoIbw4gBaG5UX0wfk6dugKxrtW`
 
 ## 2. Database
 - Run `php artisan migrate`
