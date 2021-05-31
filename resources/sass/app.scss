@@ -146,6 +146,7 @@ footer {
 .material-table {
 	margin-top: 30px;
 	margin-bottom: 30px;
+    overflow-y: auto;
 
     table {
         th {
