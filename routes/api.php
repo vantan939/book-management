@@ -24,5 +24,5 @@ Route::middleware(['api.key'])->group(function () {
 	Route::get('/my-book-list/{userId}', [APIController::class, 'getBookListByUserID']);
 	Route::delete('/book/del/{id}', [APIController::class, 'bookDelete']);	
 	Route::post('/book/create', [APIController::class, 'bookCreation']);
-	Route::put('/book/edit/{id}', [APIController::class, 'bookEdit']);
+	Route::patch('/book/edit/{id}', [APIController::class, 'bookEdit']);
 });

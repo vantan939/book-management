@@ -77,7 +77,7 @@ export default {
                 axios.request(
                 {
                     url: '/api/book/edit/' + this.propsId,
-                    method: 'PUT',
+                    method: 'PATCH',
                     headers: { 				   
 				        'X-Authorization': process.env.MIX_API_KEY
 			  	    },

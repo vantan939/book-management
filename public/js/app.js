@@ -2069,7 +2069,7 @@ __webpack_require__.r(__webpack_exports__);
       var data = this.getData();
       axios.request({
         url: '/api/book/edit/' + this.propsId,
-        method: 'PUT',
+        method: 'PATCH',
         headers: {
           'X-Authorization': "TanKMQbgZPv0PRC6GqCMlDQ7fgdamsVY75FrQvHfoIbw4gBaG5UX0wfk6dugKxrtW"
         },
