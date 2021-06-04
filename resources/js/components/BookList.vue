@@ -9,13 +9,14 @@
 			:perPage="[10, 20, 50]"
 			v-if="items.length > 0"
 		>
-			<th slot="thead-tr" v-if="propsUsertype == 'admin'">
+			<th slot="thead-tr" v-if="propsUsertype != 'guest'">
 				Delete
 			</th>
-			<template slot="tbody-tr" slot-scope="props" v-if="propsUsertype == 'admin'">
+			<template slot="tbody-tr" slot-scope="props" v-if="propsUsertype != 'guest'">
 				<td>
 					<a :href="'/book/del/' + props.row.id"
 						v-on:click.prevent="deleteBook(props.row.id, props.row.num)"
+						v-if="propsUserid == props.row.user_id || propsUsertype == 'admin'"
 					>
 						Delete
 					</a>
@@ -41,13 +42,7 @@
 						field: "title",
 						numeric: false,
 						html: true
-					},
-					{
-						label: "Description",
-						field: "description",
-						numeric: false,
-						html: true
-					},
+					},					
 					{
 						label: "Author",
 						field: "author",
@@ -59,19 +54,9 @@
 		},
 		props: ['propsUsertype', 'propsUserid'],
 		created() {
-			if(this.propsUsertype == 'admin') {
+			if(this.propsUsertype != 'guest') {
 				this.tableColumns.splice(
 					2,
-					0,
-					{
-						label: "Status",
-						field: "enabled",
-						numeric: false,
-						html: true
-					}
-				)
-				this.tableColumns.splice(
-					4,
 					0,
 					{
 						label: "Edit",
@@ -84,7 +69,7 @@
 		},
         mounted() {
             axios
-	      	.get('/api/book-list?type=' + this.propsUsertype + '&user=' + this.propsUserid,
+	      	.get('/api/book-list',
 	      	{
 		      	headers: { 				   
 				    'X-Authorization': process.env.MIX_API_KEY
@@ -116,11 +101,11 @@
 				}				
 			},
 			setNewData(data) {
+				const user_id_current = this.propsUserid
+				const user_type_current = this.propsUsertype
 				data.forEach(function(value, index) {
-					data[index].title = '<a title="'+value.title+'" href="/book/'+ value.id +'">'+ value.title +'</a>'
-					data[index].description = value.description.replace(/(.{60})..+/, "$1…")
-					data[index].enabled = (value.enabled == 1) ? '<span>Enabled</span>' : '<span class="color-red">Disabled</span>'
-					data[index].edit = '<a href="/book/edit/'+ value.id +'">Edit</a>'
+					data[index].title = '<a title="'+value.title+'" href="/book/'+ value.id +'">'+ value.title +'</a>'					
+					data[index].edit = (user_id_current == value.user_id || user_type_current == 'admin') ? '<a href="/book/edit/'+ value.id +'">Edit</a>' : ''
 					data[index].num = index + 1
 				})
 				this.items = data

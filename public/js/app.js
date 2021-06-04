@@ -2135,6 +2135,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -2143,11 +2144,6 @@ __webpack_require__.r(__webpack_exports__);
       tableColumns: [{
         label: "Title",
         field: "title",
-        numeric: false,
-        html: true
-      }, {
-        label: "Description",
-        field: "description",
         numeric: false,
         html: true
       }, {
@@ -2160,14 +2156,8 @@ __webpack_require__.r(__webpack_exports__);
   },
   props: ['propsUsertype', 'propsUserid'],
   created: function created() {
-    if (this.propsUsertype == 'admin') {
+    if (this.propsUsertype != 'guest') {
       this.tableColumns.splice(2, 0, {
-        label: "Status",
-        field: "enabled",
-        numeric: false,
-        html: true
-      });
-      this.tableColumns.splice(4, 0, {
         label: "Edit",
         field: "edit",
         numeric: false,
@@ -2178,7 +2168,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    axios.get('/api/book-list?type=' + this.propsUsertype + '&user=' + this.propsUserid, {
+    axios.get('/api/book-list', {
       headers: {
         'X-Authorization': "TanKMQbgZPv0PRC6GqCMlDQ7fgdamsVY75FrQvHfoIbw4gBaG5UX0wfk6dugKxrtW"
       }
@@ -2207,11 +2197,11 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     setNewData: function setNewData(data) {
+      var user_id_current = this.propsUserid;
+      var user_type_current = this.propsUsertype;
       data.forEach(function (value, index) {
         data[index].title = '<a title="' + value.title + '" href="/book/' + value.id + '">' + value.title + '</a>';
-        data[index].description = value.description.replace(/(.{60})..+/, "$1…");
-        data[index].enabled = value.enabled == 1 ? '<span>Enabled</span>' : '<span class="color-red">Disabled</span>';
-        data[index].edit = '<a href="/book/edit/' + value.id + '">Edit</a>';
+        data[index].edit = user_id_current == value.user_id || user_type_current == 'admin' ? '<a href="/book/edit/' + value.id + '">Edit</a>' : '';
         data[index].num = index + 1;
       });
       this.items = data;
@@ -2274,20 +2264,10 @@ __webpack_require__.r(__webpack_exports__);
         numeric: false,
         html: true
       }, {
-        label: "Description",
-        field: "description",
-        numeric: false,
-        html: true
-      }, {
         label: "Author",
         field: "author",
         numeric: false,
         html: false
-      }, {
-        label: "Status",
-        field: "enabled",
-        numeric: false,
-        html: true
       }, {
         label: "Edit",
         field: "edit",
@@ -2331,8 +2311,6 @@ __webpack_require__.r(__webpack_exports__);
     setNewData: function setNewData(data) {
       data.forEach(function (value, index) {
         data[index].title = '<a title="' + value.title + '" href="/book/' + value.id + '">' + value.title + '</a>';
-        data[index].description = value.description.replace(/(.{40})..+/, "$1…");
-        data[index].enabled = value.enabled == 1 ? '<span>Enabled</span>' : '<span class="color-red">Disabled</span>';
         data[index].edit = '<a href="/book/edit/' + value.id + '">Edit</a>';
         data[index].num = index + 1;
       });
@@ -24113,25 +24091,30 @@ var render = function() {
                   {
                     key: "tbody-tr",
                     fn: function(props) {
-                      return _vm.propsUsertype == "admin"
+                      return _vm.propsUsertype != "guest"
                         ? [
                             _c("td", [
-                              _c(
-                                "a",
-                                {
-                                  attrs: { href: "/book/del/" + props.row.id },
-                                  on: {
-                                    click: function($event) {
-                                      $event.preventDefault()
-                                      return _vm.deleteBook(
-                                        props.row.id,
-                                        props.row.num
-                                      )
-                                    }
-                                  }
-                                },
-                                [_vm._v("\n\t\t\t\t\tDelete\n\t\t\t\t")]
-                              )
+                              _vm.propsUserid == props.row.user_id ||
+                              _vm.propsUsertype == "admin"
+                                ? _c(
+                                    "a",
+                                    {
+                                      attrs: {
+                                        href: "/book/del/" + props.row.id
+                                      },
+                                      on: {
+                                        click: function($event) {
+                                          $event.preventDefault()
+                                          return _vm.deleteBook(
+                                            props.row.id,
+                                            props.row.num
+                                          )
+                                        }
+                                      }
+                                    },
+                                    [_vm._v("\n\t\t\t\t\tDelete\n\t\t\t\t")]
+                                  )
+                                : _vm._e()
                             ])
                           ]
                         : undefined
@@ -24143,7 +24126,7 @@ var render = function() {
               )
             },
             [
-              _vm.propsUsertype == "admin"
+              _vm.propsUsertype != "guest"
                 ? _c("th", { attrs: { slot: "thead-tr" }, slot: "thead-tr" }, [
                     _vm._v("\n\t\t\tDelete\n\t\t")
                   ])
