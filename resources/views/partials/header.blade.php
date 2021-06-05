@@ -18,26 +18,25 @@
 						        <a class="nav-link" href="{{route('home')}}">Books List</a>
 					      	</li>
 
-							@if(Auth::check()) <!-- Will check is Admin Later -->
+							@if(isAdmin())
 								<li class="nav-item {{ Route::is('books-disabled-list') ? 'active' : '' }}">
 									<a class="nav-link" href="{{route('books-disabled-list')}}">Books Disabled List</a>
 								</li>
 							@endif  
 
-							@if(Auth::check())
+							@if(!isGuest())
 								<li class="nav-item {{ Route::is('my-books') ? 'active' : '' }}">
 									<a class="nav-link" href="/my-books">My Books List</a>
 								</li>
 								<li class="nav-item {{ Route::is('book-creation') ? 'active' : '' }}">
 									<a class="nav-link" href="/book-creation">Book Creation</a>
 								</li>
-							@endif
-
-					      	@if(Auth::check())
 								<li class="nav-item">
 						        	<a class="nav-link" href="{{route('log-out')}}">Logout</a>
 						      	</li>
-					      	@else
+							@endif
+
+					      	@if(isGuest())
 					      		<li class="nav-item">
 						        	<a class="nav-link" href="{{route('login')}}">Login</a>
 						      	</li>

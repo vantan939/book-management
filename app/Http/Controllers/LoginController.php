@@ -8,10 +8,7 @@ use Auth;
 class LoginController extends Controller
 {
     public function create() {
-        if (Auth::check()) {
-            return redirect()->route('home');
-        }
-
+        if (!isGuest()) return redirect()->route('home');
         return view('pages.login');   	
     }
 
