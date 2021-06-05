@@ -30,8 +30,19 @@ class BookController extends Controller
 
     public function bookDetail($id) {
         $data = Book::find($id);
-        if($data) {
-            return view('pages.book-detail')->with('data', $data);
+        if($data) {            
+            if(!$data->enabled) {
+                if(!Auth::check()) {
+                    abort(404);
+                }else {
+                    $id_user_current = Auth::user()->id;
+                    if($id_user_current != $data->user_id && User::find($id_user_current)['role_id'] == 1) {
+                        abort(404);
+                    }
+                }
+            }
+
+            return view('pages.book-detail')->with('data', $data);        
         }else {
             abort(404);
         }    	
