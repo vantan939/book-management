@@ -20,8 +20,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::middleware(['api.key'])->group(function () {
-	Route::get('/book-list', [APIController::class, 'getBookList']);
-	Route::get('/my-book-list/{userId}', [APIController::class, 'getBookListByUserID']);
+	Route::get('/books-list', [APIController::class, 'getBooksList']);
+	Route::get('/books-disabled-list', [APIController::class, 'getBooksDisabledList']);
+	Route::get('/my-books-list/{userId}', [APIController::class, 'getBooksListByUserID']);
 	Route::delete('/book/del/{id}', [APIController::class, 'bookDelete']);	
 	Route::post('/book/create', [APIController::class, 'bookCreation']);
 	Route::patch('/book/edit/{id}', [APIController::class, 'bookEdit']);

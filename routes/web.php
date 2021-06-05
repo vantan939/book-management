@@ -16,7 +16,7 @@ use App\Http\Controllers\BookController;
 |
 */
 
-Route::get('/', [BookController::class, 'bookList'])->name('home');
+Route::get('/', [BookController::class, 'booksList'])->name('home');
 
 Route::get('/book/{id}', [BookController::class, 'bookDetail'])->name('book-detail');
 
@@ -32,7 +32,8 @@ Route::get('/log-out', function () {
 })->name('log-out');
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/my-book', [BookController::class, 'myBookList'])->name('my-book');
+    Route::get('/my-books', [BookController::class, 'myBooksList'])->name('my-books');
+    Route::get('/books-disabled-list', [BookController::class, 'booksDisabledList'])->name('books-disabled-list');
     Route::get('/book-creation', [BookController::class, 'bookCreation'])->name('book-creation');
     Route::get('/book/edit/{id}', [BookController::class, 'bookEdit']);
 });

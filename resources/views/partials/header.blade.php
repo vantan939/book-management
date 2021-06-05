@@ -15,12 +15,18 @@
 				  	<div class="collapse navbar-collapse" id="navbarNav">
 					    <ul class="navbar-nav">
 					      	<li class="nav-item {{ Route::is('home') ? 'active' : '' }}">
-						        <a class="nav-link" href="{{route('home')}}">Book List</a>
+						        <a class="nav-link" href="{{route('home')}}">Books List</a>
 					      	</li>
 
+							@if(Auth::check()) <!-- Will check is Admin Later -->
+								<li class="nav-item {{ Route::is('books-disabled-list') ? 'active' : '' }}">
+									<a class="nav-link" href="{{route('books-disabled-list')}}">Books Disabled List</a>
+								</li>
+							@endif  
+
 							@if(Auth::check())
-								<li class="nav-item {{ Route::is('my-book') ? 'active' : '' }}">
-									<a class="nav-link" href="/my-book">My Book List</a>
+								<li class="nav-item {{ Route::is('my-books') ? 'active' : '' }}">
+									<a class="nav-link" href="/my-books">My Books List</a>
 								</li>
 								<li class="nav-item {{ Route::is('book-creation') ? 'active' : '' }}">
 									<a class="nav-link" href="/book-creation">Book Creation</a>

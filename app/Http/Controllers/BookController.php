@@ -9,7 +9,7 @@ use Auth;
 
 class BookController extends Controller
 {
-    public function bookList() {
+    public function booksList() {
         if(Auth::check()) {
             $id_user_current = Auth::user()->id;
             if(User::find($id_user_current)['role_id'] == 1) {
@@ -21,11 +21,20 @@ class BookController extends Controller
             $type_user = 'guest';
             $id_user_current = 0;
         }
-    	return view('pages.book-list', compact('type_user','id_user_current'));
+    	return view('pages.books-list', compact('type_user','id_user_current'));
     }
 
-    public function myBookList() {
-    	return view('pages.my-book-list');
+    public function myBooksList() {
+    	return view('pages.my-books-list');
+    }
+
+    public function booksDisabledList() {
+        $id_user_current = Auth::user()->id;
+        if(User::find($id_user_current)['role_id'] == 1) {
+            abort(404);
+        }else {
+            return view('pages.books-disabled-list');
+        }    	
     }
 
     public function bookDetail($id) {

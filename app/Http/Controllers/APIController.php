@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class APIController extends Controller
 {
-    public function getBookList(Request $request) {
+    public function getBooksList() {
         $books = Book::where('enabled', 1)->get();
         
         if($books->isNotEmpty()) {
@@ -17,7 +17,17 @@ class APIController extends Controller
         }
     }
 
-    public function getBookListByUserID($userId) {
+    public function getBooksDisabledList() {
+        $books = Book::where('enabled', 0)->get();
+        
+        if($books->isNotEmpty()) {
+            return response()->json($books, 200);
+        }else {
+            return response()->json('Book Not found!', 200);
+        }
+    }
+
+    public function getBooksListByUserID($userId) {
         $books = Book::where('user_id', $userId)->get();
 
         if($books->isNotEmpty()) {
