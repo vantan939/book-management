@@ -1898,6 +1898,7 @@ __webpack_require__.r(__webpack_exports__);
   props: ['propsUserid'],
   methods: {
     onSubmit: function onSubmit() {
+      this.success = 0;
       this.validate();
     },
     validate: function validate() {
@@ -1929,9 +1930,17 @@ __webpack_require__.r(__webpack_exports__);
         },
         data: data
       }).then(function (resp) {
+        _this.success = 1;
+
         _this.resetData();
-      })["catch"](function (error) {
-        console.log(error);
+      })["catch"](function (e) {
+        var errors = _this.errors;
+        var e_items = e.response.data.errors;
+        var keys = Object.keys(e_items);
+        keys.forEach(function (k) {
+          errors.push(e_items[k][0]);
+        });
+        window.scrollTo(0, 0);
       });
     },
     getData: function getData() {
@@ -1944,7 +1953,6 @@ __webpack_require__.r(__webpack_exports__);
       return formData;
     },
     resetData: function resetData() {
-      this.success = 1;
       this.title = null;
       this.author = null;
       this.description = null;
@@ -2043,6 +2051,7 @@ __webpack_require__.r(__webpack_exports__);
   props: ['propsId', 'propsTitle', 'propsAuthor', 'propsDescription', 'propsEnabled', 'propsUsertype'],
   methods: {
     onSubmit: function onSubmit() {
+      this.success = 0;
       this.validate();
     },
     validate: function validate() {
@@ -2076,8 +2085,14 @@ __webpack_require__.r(__webpack_exports__);
         data: data
       }).then(function (resp) {
         _this.success = 1;
-      })["catch"](function (error) {
-        console.log(error);
+      })["catch"](function (e) {
+        var errors = _this.errors;
+        var e_items = e.response.data.errors;
+        var keys = Object.keys(e_items);
+        keys.forEach(function (k) {
+          errors.push(e_items[k][0]);
+        });
+        window.scrollTo(0, 0);
       });
     },
     getData: function getData() {

@@ -52,6 +52,7 @@ export default {
         props: ['propsUserid'],
         methods: {
             onSubmit() {
+                this.success = 0
                 this.validate()
             },
             validate() {
@@ -83,10 +84,17 @@ export default {
                     data: data
                 })
                 .then(resp => {
+                    this.success = 1
                     this.resetData()
                 })
-                .catch(error => {
-                    console.log(error);
+                .catch(e => {
+                    const errors = this.errors
+                    const e_items = e.response.data.errors
+                    const keys = Object.keys(e_items);
+                    keys.forEach(function(k){
+                        errors.push(e_items[k][0])
+                    })
+                    window.scrollTo(0,0)
                 })
             },
             getData() {
@@ -100,7 +108,6 @@ export default {
                 return formData;
             },
             resetData() {
-                this.success = 1
                 this.title = null
                 this.author = null
                 this.description = null

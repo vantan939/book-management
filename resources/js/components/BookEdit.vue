@@ -52,6 +52,7 @@ export default {
         props: ['propsId', 'propsTitle', 'propsAuthor', 'propsDescription', 'propsEnabled', 'propsUsertype'],
         methods: {
             onSubmit() {
+                this.success = 0
                 this.validate()
             },
             validate() {
@@ -86,8 +87,14 @@ export default {
                 .then(resp => {
                     this.success = 1
                 })
-                .catch(error => {
-                    console.log(error);
+                .catch(e => {
+                    const errors = this.errors
+                    const e_items = e.response.data.errors
+                    const keys = Object.keys(e_items);
+                    keys.forEach(function(k){
+                        errors.push(e_items[k][0])
+                    })
+                    window.scrollTo(0,0)
                 })
             },
             getData() {
