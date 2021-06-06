@@ -2040,7 +2040,7 @@ __webpack_require__.r(__webpack_exports__);
       enabled: this.propsEnabled
     };
   },
-  props: ['propsId', 'propsTitle', 'propsAuthor', 'propsDescription', 'propsEnabled'],
+  props: ['propsId', 'propsTitle', 'propsAuthor', 'propsDescription', 'propsEnabled', 'propsUsertype'],
   methods: {
     onSubmit: function onSubmit() {
       this.validate();
@@ -24156,49 +24156,51 @@ var render = function() {
           })
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "form-group" }, [
-          _c("label", [_vm._v("Enabled")]),
-          _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.enabled,
-                expression: "enabled"
-              }
-            ],
-            attrs: { type: "radio", name: "enabled", value: "1" },
-            domProps: { checked: _vm._q(_vm.enabled, "1") },
-            on: {
-              change: function($event) {
-                _vm.enabled = "1"
-              }
-            }
-          }),
-          _vm._v(" "),
-          _c("span", { staticClass: "mr-20" }, [_vm._v("Yes")]),
-          _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.enabled,
-                expression: "enabled"
-              }
-            ],
-            attrs: { type: "radio", name: "enabled", value: "0" },
-            domProps: { checked: _vm._q(_vm.enabled, "0") },
-            on: {
-              change: function($event) {
-                _vm.enabled = "0"
-              }
-            }
-          }),
-          _vm._v(" "),
-          _c("span", [_vm._v("No")])
-        ]),
+        _vm.propsUsertype == "admin"
+          ? _c("div", { staticClass: "form-group" }, [
+              _c("label", [_vm._v("Enabled")]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.enabled,
+                    expression: "enabled"
+                  }
+                ],
+                attrs: { type: "radio", name: "enabled", value: "1" },
+                domProps: { checked: _vm._q(_vm.enabled, "1") },
+                on: {
+                  change: function($event) {
+                    _vm.enabled = "1"
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c("span", { staticClass: "mr-20" }, [_vm._v("Yes")]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.enabled,
+                    expression: "enabled"
+                  }
+                ],
+                attrs: { type: "radio", name: "enabled", value: "0" },
+                domProps: { checked: _vm._q(_vm.enabled, "0") },
+                on: {
+                  change: function($event) {
+                    _vm.enabled = "0"
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c("span", [_vm._v("No")])
+            ])
+          : _vm._e(),
         _vm._v(" "),
         _vm.success
           ? _c(

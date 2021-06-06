@@ -13,6 +13,7 @@
                         props-author="{{ $data['author'] }}"
                         props-description="{{ $data['description'] }}"
                         props-enabled="{{ $data['enabled'] }}"
+						props-usertype="{{ $data['type_user'] }}"
                     ></book-edit>
 				</div>				
 			</div>			

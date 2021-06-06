@@ -19,7 +19,7 @@
                 <label>Description</label>
                 <textarea name="description" id="" v-model="description" cols="30" rows="10" class="form-control"></textarea>
             </div>
-            <div class="form-group">
+            <div class="form-group" v-if="propsUsertype == 'admin'">
                 <label>Enabled</label>
                 <input type="radio" name="enabled" value="1" v-model="enabled">
                 <span class="mr-20">Yes</span>
@@ -49,7 +49,7 @@ export default {
                 enabled: this.propsEnabled
 			}
 		},
-        props: ['propsId', 'propsTitle', 'propsAuthor', 'propsDescription', 'propsEnabled'],
+        props: ['propsId', 'propsTitle', 'propsAuthor', 'propsDescription', 'propsEnabled', 'propsUsertype'],
         methods: {
             onSubmit() {
                 this.validate()

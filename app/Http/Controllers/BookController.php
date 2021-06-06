@@ -42,6 +42,7 @@ class BookController extends Controller
 
     public function bookEdit($id) {
         $data = Book::find($id);
+        $data->type_user = getUserType();
         if(get_idUser_current() == $data->user_id || isAdmin()) {
             return view('pages.book-edit')->with('data', $data);
         }else {
