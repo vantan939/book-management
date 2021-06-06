@@ -15,7 +15,7 @@
 			<template slot="tbody-tr" slot-scope="props">
 				<td>
 					<a href="javascript:void(0)"
-						v-on:click.prevent="deleteBook(props.row.id, props.row.num)"
+						v-on:click.prevent="deleteBook(props.row.id)"
 					>
 						Delete
 					</a>
@@ -75,7 +75,7 @@
 			})
         },
 		methods: {
-			deleteBook(id, index) {
+			deleteBook(id) {
 				if(confirm('Do you want delete this book?')) {
 					axios.delete('/api/book/del/'+ id,
 					{
@@ -84,10 +84,11 @@
 						}
 					})
 					.then(resp => {
-						this.items.splice(index - 1, 1);
+						const deleteIndex = this.items.findIndex(item => item.id === id)
+						this.items.splice(deleteIndex, 1)
 					})
 					.catch(error => {
-						console.log(error);
+						console.log(error)
 					})
 				}				
 			},
@@ -95,7 +96,6 @@
 				data.forEach(function(value, index) {
 					data[index].title = '<a title="'+value.title+'" href="/book/'+ value.id +'">'+ value.title +'</a>'					
 					data[index].edit = '<a href="/book/edit/'+ value.id +'">Edit</a>'
-					data[index].num = index + 1
 				})
 				this.items = data
 			}

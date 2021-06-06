@@ -15,7 +15,7 @@
 			<template slot="tbody-tr" slot-scope="props" v-if="propsUsertype != 'guest'">
 				<td>
 					<a href="javascript:void(0)"
-						v-on:click.prevent="deleteBook(props.row.id, props.row.num)"
+						v-on:click.prevent="deleteBook(props.row.id)"
 						v-if="propsUserid == props.row.user_id || propsUsertype == 'admin'"
 					>
 						Delete
@@ -93,7 +93,8 @@
 						}
 					})
 					.then(resp => {
-						this.items.splice(index - 1, 1);
+						const deleteIndex = this.items.findIndex(item => item.id === id)
+						this.items.splice(deleteIndex, 1)
 					})
 					.catch(error => {
 						console.log(error);
@@ -105,8 +106,7 @@
 				const user_type_current = this.propsUsertype
 				data.forEach(function(value, index) {
 					data[index].title = '<a title="'+value.title+'" href="/book/'+ value.id +'">'+ value.title +'</a>'					
-					data[index].edit = (user_id_current == value.user_id || user_type_current == 'admin') ? '<a href="/book/edit/'+ value.id +'">Edit</a>' : ''
-					data[index].num = index + 1
+					data[index].edit = (user_id_current == value.user_id || user_type_current == 'admin') ? '<a href="/book/edit/'+ value.id +'">Edit</a>' : ''					
 				})
 				this.items = data
 			}

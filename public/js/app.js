@@ -2314,7 +2314,11 @@ __webpack_require__.r(__webpack_exports__);
             'X-Authorization': "TanKMQbgZPv0PRC6GqCMlDQ7fgdamsVY75FrQvHfoIbw4gBaG5UX0wfk6dugKxrtW"
           }
         }).then(function (resp) {
-          _this2.items.splice(index - 1, 1);
+          var deleteIndex = _this2.items.findIndex(function (item) {
+            return item.id === id;
+          });
+
+          _this2.items.splice(deleteIndex, 1);
         })["catch"](function (error) {
           console.log(error);
         });
@@ -2326,7 +2330,6 @@ __webpack_require__.r(__webpack_exports__);
       data.forEach(function (value, index) {
         data[index].title = '<a title="' + value.title + '" href="/book/' + value.id + '">' + value.title + '</a>';
         data[index].edit = user_id_current == value.user_id || user_type_current == 'admin' ? '<a href="/book/edit/' + value.id + '">Edit</a>' : '';
-        data[index].num = index + 1;
       });
       this.items = data;
     }
@@ -2417,7 +2420,7 @@ __webpack_require__.r(__webpack_exports__);
     });
   },
   methods: {
-    deleteBook: function deleteBook(id, index) {
+    deleteBook: function deleteBook(id) {
       var _this2 = this;
 
       if (confirm('Do you want delete this book?')) {
@@ -2426,7 +2429,11 @@ __webpack_require__.r(__webpack_exports__);
             'X-Authorization': "TanKMQbgZPv0PRC6GqCMlDQ7fgdamsVY75FrQvHfoIbw4gBaG5UX0wfk6dugKxrtW"
           }
         }).then(function (resp) {
-          _this2.items.splice(index - 1, 1);
+          var deleteIndex = _this2.items.findIndex(function (item) {
+            return item.id === id;
+          });
+
+          _this2.items.splice(deleteIndex, 1);
         })["catch"](function (error) {
           console.log(error);
         });
@@ -2436,7 +2443,6 @@ __webpack_require__.r(__webpack_exports__);
       data.forEach(function (value, index) {
         data[index].title = '<a title="' + value.title + '" href="/book/' + value.id + '">' + value.title + '</a>';
         data[index].edit = '<a href="/book/edit/' + value.id + '">Edit</a>';
-        data[index].num = index + 1;
       });
       this.items = data;
     }
@@ -24396,10 +24402,7 @@ var render = function() {
                                       on: {
                                         click: function($event) {
                                           $event.preventDefault()
-                                          return _vm.deleteBook(
-                                            props.row.id,
-                                            props.row.num
-                                          )
+                                          return _vm.deleteBook(props.row.id)
                                         }
                                       }
                                     },
@@ -24493,10 +24496,7 @@ var render = function() {
                               on: {
                                 click: function($event) {
                                   $event.preventDefault()
-                                  return _vm.deleteBook(
-                                    props.row.id,
-                                    props.row.num
-                                  )
+                                  return _vm.deleteBook(props.row.id)
                                 }
                               }
                             },
@@ -24509,7 +24509,7 @@ var render = function() {
                 ],
                 null,
                 false,
-                134588948
+                2620313194
               )
             },
             [
