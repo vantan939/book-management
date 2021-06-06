@@ -24377,9 +24377,7 @@ var render = function() {
                                 ? _c(
                                     "a",
                                     {
-                                      attrs: {
-                                        href: "/book/del/" + props.row.id
-                                      },
+                                      attrs: { href: "javascript:void(0)" },
                                       on: {
                                         click: function($event) {
                                           $event.preventDefault()
@@ -24476,7 +24474,7 @@ var render = function() {
                           _c(
                             "a",
                             {
-                              attrs: { href: "/book/del/" + props.row.id },
+                              attrs: { href: "javascript:void(0)" },
                               on: {
                                 click: function($event) {
                                   $event.preventDefault()
@@ -24496,7 +24494,7 @@ var render = function() {
                 ],
                 null,
                 false,
-                36983473
+                134588948
               )
             },
             [

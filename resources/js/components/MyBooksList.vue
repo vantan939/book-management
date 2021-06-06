@@ -14,7 +14,7 @@
 			</th>
 			<template slot="tbody-tr" slot-scope="props">
 				<td>
-					<a :href="'/book/del/' + props.row.id"
+					<a href="javascript:void(0)"
 						v-on:click.prevent="deleteBook(props.row.id, props.row.num)"
 					>
 						Delete
