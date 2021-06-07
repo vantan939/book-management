@@ -24,8 +24,8 @@ class BookFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|max:255|alpha',
-            'author'=>'required|max:255|alpha',
+            'title' => 'required|max:255|alpha_num',
+            'author'=>'required|max:255|alpha_num',
             'description' => '',
             'enabled' => '',
             'user_id' => ''
@@ -37,10 +37,10 @@ class BookFormRequest extends FormRequest
         return [
             'title.required' => 'Title is required!',
             'title.max' => 'Title length is too long',
-            'title.alpha' => 'Title only alphabet',
+            'title.alpha_num' => 'Title only alphabet and number',
             'author.required' => 'Author is required!',
             'author.max' => 'Author length is too long',
-            'author.alpha' => 'Author only alphabet'
+            'author.alpha_num' => 'Author only alphabet and number'
         ];
     }
 }
